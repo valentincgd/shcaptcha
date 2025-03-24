@@ -123,9 +123,9 @@ func (hc *HttpClient) GetSolution(sitekey string, host string, nhash string, mot
 	data.Set("c", cData)
 
 	params := url.Values{}
-	params.Add("s", sitekey)
+	params.Add("t", "t")
 
-	res, err := hc.Request(&Route{Method: "POST", Path: "/getcaptcha"}, &params, data.Encode())
+	res, err := hc.Request(&Route{Method: "POST", Path: "/getcaptcha/"+sitekey}, &params, data.Encode())
 	if err != nil {
 		return &CaptchaSolution{}, err
 	}
